@@ -2,8 +2,8 @@ extends Camera3D
 
 const SPEED := 10.0
 const SENS := 0.2
-var x := 0.0
-var y := 0.0
+@export var x := -45.0
+@export var y := 90.0
 var captured := true
 
 func _ready() -> void:

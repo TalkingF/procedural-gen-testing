@@ -35,5 +35,25 @@ func set_instance_position(x: int, y: int, z: int) -> void:
 	var pos = Vector3(x, y, z)
 	var transform := Transform3D(Basis(), pos)
 	multimesh.set_instance_transform(cnt, transform)
-	multimesh.set_instance_color(cnt, Color.AQUA)
+	multimesh.set_instance_color(cnt, Color.ANTIQUE_WHITE)
+	if y > 10:
+		multimesh.set_instance_color(cnt, Color.AQUA)
+	if y > 20:
+		multimesh.set_instance_color(cnt, Color.YELLOW)
+	if y > 30:
+		multimesh.set_instance_color(cnt, Color.GREEN_YELLOW)
+	if y > 40:
+		multimesh.set_instance_color(cnt, Color.CORAL)
+	if y > 50:
+		multimesh.set_instance_color(cnt, Color.RED)
+	if y > 60:
+		multimesh.set_instance_color(cnt, Color.MEDIUM_VIOLET_RED)
+	if y > 70:
+		multimesh.set_instance_color(cnt, Color.PURPLE)
+	if y > 80:
+		multimesh.set_instance_color(cnt, Color.PINK)
+	if y > 90:
+		multimesh.set_instance_color(cnt, Color.DIM_GRAY)
+	if y > 95:
+		multimesh.set_instance_color(cnt, Color.BLACK)
 	
