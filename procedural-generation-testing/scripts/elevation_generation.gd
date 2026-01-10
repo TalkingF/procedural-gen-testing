@@ -4,8 +4,6 @@ extends Node
 
 var _elevation_map: Array[PackedFloat32Array]
 var _noise_gen: FastNoiseLite
-var _noise_gen_second: FastNoiseLite
-var _noise_gen_third: FastNoiseLite
 
 func _init() -> void:
 	_noise_gen = FastNoiseLite.new()
@@ -29,10 +27,9 @@ func gen_elevation(width: int, length: int) -> Array[PackedFloat32Array]:
 	size_map(width, length)
 	for x in range(length):
 		for y in range(width):
-			#generate height in several octaves
 			var height = _noise_gen.get_noise_2d(x, y)
 			height = (height + 1.0) * 0.5
-			height = pow(height, 1.8)
+			height = pow(height, 1.2)
 			height = snapped(height , 0.01)
 			_elevation_map[x][y] = height
 	return _elevation_map
