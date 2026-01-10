@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://c1jo8n5x1qy2n"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_y44tv"]
+
+[sub_resource type="MultiMesh" id="MultiMesh_bc5iu"]
+mesh = SubResource("BoxMesh_y44tv")
+
+[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" unique_id=115440080]
+multimesh = SubResource("MultiMesh_bc5iu")
