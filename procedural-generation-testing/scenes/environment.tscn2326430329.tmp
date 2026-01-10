@@ -14,9 +14,6 @@ transform_format = 1
 use_colors = true
 mesh = SubResource("BoxMesh_y44tv")
 
-[sub_resource type="Environment" id="Environment_fm4en"]
-background_energy_multiplier = 1.8
-
 [node name="Node3D" type="Node3D" unique_id=1401685679]
 
 [node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="." unique_id=115440080]
@@ -24,13 +21,4 @@ multimesh = SubResource("MultiMesh_bc5iu")
 script = ExtResource("1_bc5iu")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1612100409]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110, 50, 50)
-fov = 90.0
 script = ExtResource("2_fm4en")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1101783611]
-environment = SubResource("Environment_fm4en")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=814872592]
-transform = Transform3D(1, 0, 0, 0, 1.1924881e-08, 1, 0, -1, 1.1924881e-08, 0, 200, 0)
-light_energy = 2.0
