@@ -36,11 +36,11 @@ func gen_terrain(elevation_map: Array[PackedFloat32Array], moisture_map: Array[P
 				if elevation_map[x][z] >= y:
 					cnt += 1
 					set_instance_position(x,y_int,z)
-					set_instance_colour(y, moisture_map[x][y])
+					set_instance_colour(y, moisture_map[x][z])
 				elif y < WATER_HEIGHT:
 					cnt += 1
 					set_instance_position(x,y_int,z)
-					set_instance_colour(y, moisture_map[x][y])
+					set_instance_colour(y, moisture_map[x][z])
 
 # Inserts cube into multimesh			
 func set_instance_position(x: int, y: int, z: int) -> void:

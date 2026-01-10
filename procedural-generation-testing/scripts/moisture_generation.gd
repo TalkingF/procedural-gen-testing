@@ -7,8 +7,9 @@ var _noise_gen: FastNoiseLite
 func _init() -> void:
 	_noise_gen = FastNoiseLite.new()
 	_noise_gen.noise_type = FastNoiseLite.TYPE_PERLIN
-	_noise_gen.fractal_type = FastNoiseLite.FRACTAL_NONE
-	_noise_gen.frequency = 0.01
+	_noise_gen.fractal_type = FastNoiseLite.FRACTAL_FBM
+	_noise_gen.frequency = 0.008
+	_noise_gen.seed = randi()
 	
 # Clear and resizes moisture map in preperation of use
 func size_map(width: int, length: int) -> void:
@@ -20,9 +21,9 @@ func size_map(width: int, length: int) -> void:
 # Generates an moisture map for the desired width and length
 func gen_moisture(width: int, length: int) -> Array[PackedFloat32Array]:
 	size_map(width, length)
-	for x in range(length):
-		for y in range(width):
+	for y in range(length):
+		for x in range(width):
 			var height = _noise_gen.get_noise_2d(x, y)
 			height = (height + 1.0) * 0.5
-			_moisture_map[x][y] = height
+			_moisture_map[y][x] = height
 	return _moisture_map
