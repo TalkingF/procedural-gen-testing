@@ -4,7 +4,7 @@ extends MultiMeshInstance3D
 @export var LENGTH := 100
 @export var MAX_HEIGHT := 100
 @export var WATER_HEIGHT := 0.15
-var elevation_gen: elevation_generation
+@export var elevation_gen: ElevationGeneration
 var moisture_gen: moisture_generation
 var biome_info : biome_information
 var cnt := 0
@@ -14,7 +14,6 @@ var cnt := 0
 
 func _ready() -> void:
 	multimesh.instance_count = WIDTH * LENGTH * MAX_HEIGHT
-	elevation_gen = elevation_generation.new()
 	moisture_gen = moisture_generation.new()
 	biome_info = biome_information.new()
 	var elevation_map := elevation_gen.gen_elevation(WIDTH, LENGTH)

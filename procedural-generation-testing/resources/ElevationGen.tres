@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ElevationGeneration" format=3 uid="uid://by53dmt03x72b"]
+
+[ext_resource type="Script" uid="uid://btv0ouohcnicx" path="res://scripts/elevation_generation.gd" id="1_btk4p"]
+
+[sub_resource type="Curve" id="Curve_6jg6u"]
+_data = [Vector2(0, 0), 0.0, 1.2438909, 0, 1, Vector2(0.26551723, 0.33027446), 0.0, 0.0, 0, 0, Vector2(0.33908045, 0.3825968), 0.7112566, 0.83037204, 1, 1, Vector2(0.5482759, 0.55630684), 0.0, 0.0, 0, 0, Vector2(0.7149426, 0.7321098), 1.0548176, 3.5423176, 1, 1, Vector2(0.7781609, 0.95604926), 3.5423176, 0.19811991, 1, 1, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 7
+
+[resource]
+script = ExtResource("1_btk4p")
+curve = SubResource("Curve_6jg6u")
+metadata/_custom_type_script = "uid://btv0ouohcnicx"

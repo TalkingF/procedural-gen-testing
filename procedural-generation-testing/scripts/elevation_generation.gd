@@ -1,9 +1,10 @@
-class_name elevation_generation
-extends Node
+class_name ElevationGeneration
+extends Resource
 
 
 var _elevation_map: Array[PackedFloat32Array]
 var _noise_gen: FastNoiseLite
+@export var curve : Curve
 
 func _init() -> void:
 	_noise_gen = FastNoiseLite.new()
@@ -27,9 +28,9 @@ func gen_elevation(width: int, length: int) -> Array[PackedFloat32Array]:
 	size_map(width, length)
 	for x in range(length):
 		for y in range(width):
-			var height = _noise_gen.get_noise_2d(x, y)
+			var height := _noise_gen.get_noise_2d((x + 0.13) * 0.98, (y + 0.73) * 0.87)
 			height = (height + 1.0) * 0.5
-			height = pow(height, 1.2)
+			height = curve.sample(height)
 			height = snapped(height , 0.01)
 			_elevation_map[x][y] = height
 	return _elevation_map

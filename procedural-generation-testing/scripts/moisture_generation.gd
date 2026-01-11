@@ -23,7 +23,7 @@ func gen_moisture(width: int, length: int) -> Array[PackedFloat32Array]:
 	size_map(width, length)
 	for y in range(length):
 		for x in range(width):
-			var height = _noise_gen.get_noise_2d(x, y)
+			var height = _noise_gen.get_noise_2d((x + 0.13) * 0.98, (y + 0.73) * 0.87)
 			height = (height + 1.0) * 0.5
 			_moisture_map[y][x] = height
 	return _moisture_map
