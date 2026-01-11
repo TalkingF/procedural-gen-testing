@@ -29,8 +29,8 @@ const biome_colours: Dictionary[BiomeType, Color]= {
 	BiomeType.TEMPERATE_DESERT: Color.ORANGE_RED
 	}
 
-func determine_biome_type(height: float, moisture: float, water_level: float) -> BiomeType:
-	if height <= water_level:
+func determine_biome_type(height: float, moisture: float, water_level: float, water_pass: bool) -> BiomeType:
+	if height <= water_level and water_pass:
 		return BiomeType.WATER
 		
 	elif height >= 0.9: 

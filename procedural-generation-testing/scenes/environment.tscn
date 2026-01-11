@@ -22,8 +22,9 @@ background_energy_multiplier = 1.8
 [node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="." unique_id=115440080]
 multimesh = SubResource("MultiMesh_bc5iu")
 script = ExtResource("1_bc5iu")
-WIDTH = 150
-LENGTH = 150
+WIDTH = 256
+LENGTH = 256
+WATER_HEIGHT = 0.4
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1612100409]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115, 75, 50)

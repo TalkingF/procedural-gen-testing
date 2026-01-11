@@ -22,35 +22,36 @@ func _ready() -> void:
 	gen_terrain(elevation_map, moisture_map)
 	
 	
-	
-
-
-func _process(delta: float) -> void:
-	pass
-	
 func gen_terrain(elevation_map: Array[PackedFloat32Array], moisture_map: Array[PackedFloat32Array]) -> void:
-	for y_int in range(MAX_HEIGHT): 
-		var y := float(y_int) / 100.0
-		for x in range(elevation_map.size()):
-			for z in range(elevation_map[x].size()):
-				if elevation_map[x][z] >= y:
-					cnt += 1
-					set_instance_position(x,y_int,z)
-					set_instance_colour(y, moisture_map[x][z])
-				elif y < WATER_HEIGHT:
-					cnt += 1
-					set_instance_position(x,y_int,z)
-					set_instance_colour(y, moisture_map[x][z])
+	for x in range(elevation_map.size()):
+		for z in range(elevation_map[x].size()):
+			var y := elevation_map[x][z]
+			var land_scale := int(y * 100.0)
+			
+			#land generation
+			cnt += 1
+			set_instance_position(x, land_scale ,z , 0)
+			set_instance_colour(y, moisture_map[x][z], false)
+			
+			#water generation
+			if y < WATER_HEIGHT:
+				cnt += 1
+				var water_scale:= (WATER_HEIGHT * 100.0) - land_scale
+				set_instance_position(x, water_scale ,z, land_scale)
+				set_instance_colour(y, moisture_map[x][z], true)
+			
 
-# Inserts cube into multimesh			
-func set_instance_position(x: int, y: int, z: int) -> void:
-	var pos = Vector3(x, y, z)
-	var transform := Transform3D(Basis(), pos)
+# Inserts cube into multimesh, y is how tall it is and offset is where it starts			
+func set_instance_position(x: int, y: int, z: int, height_offset: int) -> void:
+	var pos = Vector3(x, (y / 2.0) + height_offset, z)
+	var basis := Basis().scaled(Vector3(1, y, 1))
+	var transform := Transform3D(basis, pos)
 	multimesh.set_instance_transform(cnt, transform)
+	
 
 # Determines colour of cube
-func set_instance_colour(height: float, moisture: float) -> void:
-	var biome := biome_info.determine_biome_type(height, moisture, WATER_HEIGHT)
+func set_instance_colour(height: float, moisture: float, is_water: bool) -> void:
+	var biome := biome_info.determine_biome_type(height, moisture, WATER_HEIGHT, is_water)
 	var colour := biome_info.biome_colours[biome]
 	multimesh.set_instance_color(cnt, colour)
 	
