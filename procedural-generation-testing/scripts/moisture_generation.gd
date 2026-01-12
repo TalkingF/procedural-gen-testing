@@ -1,4 +1,4 @@
-class_name moisture_generation
+class_name MoistureGeneration
 extends Node
 
 var _moisture_map: Array[PackedFloat32Array]

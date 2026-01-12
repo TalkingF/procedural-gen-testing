@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://c1jo8n5x1qy2n"]
 
-[ext_resource type="Script" uid="uid://bxcau26dlk8h8" path="res://scripts/construct_terrain.gd" id="1_bc5iu"]
-[ext_resource type="Resource" uid="uid://by53dmt03x72b" path="res://resources/ElevationGen.tres" id="2_d5dl1"]
-[ext_resource type="Script" uid="uid://bgxnu1sqrp0x6" path="res://scripts/debug_camera.gd" id="2_fm4en"]
+[ext_resource type="Script" uid="uid://bxcau26dlk8h8" path="res://scripts/construct_terrain_3d.gd" id="1_ynsmv"]
+[ext_resource type="Resource" uid="uid://by53dmt03x72b" path="res://resources/ElevationGen.tres" id="2_ykaw7"]
+[ext_resource type="Script" uid="uid://bgxnu1sqrp0x6" path="res://scripts/debug_camera_3d.gd" id="3_ni73y"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bc5iu"]
 vertex_color_use_as_albedo = true
@@ -18,20 +18,20 @@ mesh = SubResource("BoxMesh_y44tv")
 [sub_resource type="Environment" id="Environment_fm4en"]
 background_energy_multiplier = 1.8
 
-[node name="Node3D" type="Node3D" unique_id=1401685679]
+[node name="3DGeneration" type="Node3D" unique_id=1401685679]
 
 [node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="." unique_id=115440080]
 multimesh = SubResource("MultiMesh_bc5iu")
-script = ExtResource("1_bc5iu")
+script = ExtResource("1_ynsmv")
 WIDTH = 256
 LENGTH = 256
 WATER_HEIGHT = 0.4
-elevation_gen = ExtResource("2_d5dl1")
+elevation_gen = ExtResource("2_ykaw7")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1612100409]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115, 75, 50)
 fov = 90.0
-script = ExtResource("2_fm4en")
+script = ExtResource("3_ni73y")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1101783611]
 environment = SubResource("Environment_fm4en")
