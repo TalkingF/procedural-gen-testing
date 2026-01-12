@@ -31,8 +31,8 @@ metadata/_custom_type_script = "uid://btv0ouohcnicx"
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=930253664]
 tile_set = SubResource("TileSet_uokab")
 script = ExtResource("2_5itb5")
-WIDTH = 256
-LENGTH = 256
+WIDTH = 1024
+LENGTH = 1024
 elevation_gen = SubResource("Resource_d0x37")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1157926201]
