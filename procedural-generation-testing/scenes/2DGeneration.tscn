@@ -18,8 +18,8 @@ texture = ExtResource("1_210i5")
 sources/0 = SubResource("TileSetAtlasSource_5itb5")
 
 [sub_resource type="Curve" id="Curve_hw8is"]
-_data = [Vector2(0, 0.013282657), 0.0, 0.0, 0, 0, Vector2(0.25957444, 0), 0.0, 0.0, 0, 0, Vector2(0.41276595, 0.13029069), 0.0, 0.0, 0, 0, Vector2(0.5241135, 0.29890782), 0.0, 0.0, 0, 0, Vector2(0.58014184, 0.49668425), 0.0, 0.0, 0, 0, Vector2(0.67872345, 1), 0.0, 0.0, 0, 0, Vector2(0.7446808, 1), 0.0, 0.0, 0, 0, Vector2(0.85531914, 1), 0.0, 0.0, 0, 0]
-point_count = 8
+_data = [Vector2(0, 0.013282657), 0.0, 0.0, 0, 0, Vector2(0.37694013, 0.10532439), 0.0, 0.0, 0, 0, Vector2(0.41685143, 0.25242192), 0.23080114, 0.23080114, 0, 0, Vector2(0.51108646, 0.33503836), 0.0, 0.0, 0, 0, Vector2(0.69844794, 1), 0.8388751, 0.0, 0, 0]
+point_count = 5
 
 [sub_resource type="Resource" id="Resource_d0x37"]
 script = ExtResource("3_uokab")
