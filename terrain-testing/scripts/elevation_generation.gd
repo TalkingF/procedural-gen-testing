@@ -4,12 +4,14 @@ extends Resource
 
 var _elevation_map: Array[PackedFloat32Array]
 var _noise_gen: FastNoiseLite
+var rng: RandomNumberGenerator
 @export var curve : Curve
 
 func _init() -> void:
+	rng = RandomNumberGenerator.new()
+
 	_noise_gen = FastNoiseLite.new()
 	_noise_gen.noise_type = FastNoiseLite.TYPE_PERLIN
-	_noise_gen.seed = randi()
 	_noise_gen.fractal_octaves = 3
 	_noise_gen.frequency = 0.02
 	
@@ -25,6 +27,9 @@ func size_map(width: int, length: int) -> void:
 
 # Generates an elevation map for the desired width and length
 func gen_elevation(width: int, length: int) -> Array[PackedFloat32Array]:
+	rng.randomize()
+	_noise_gen.seed = rng.randi()
+	
 	size_map(width, length)
 	for x in range(length):
 		for y in range(width):

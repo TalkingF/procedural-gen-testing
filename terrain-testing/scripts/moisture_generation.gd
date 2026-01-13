@@ -3,13 +3,15 @@ extends Node
 
 var _moisture_map: Array[PackedFloat32Array]
 var _noise_gen: FastNoiseLite
+var rng: RandomNumberGenerator
 
 func _init() -> void:
+	rng = RandomNumberGenerator.new()
 	_noise_gen = FastNoiseLite.new()
 	_noise_gen.noise_type = FastNoiseLite.TYPE_PERLIN
 	_noise_gen.fractal_type = FastNoiseLite.FRACTAL_FBM
 	_noise_gen.frequency = 0.008
-	_noise_gen.seed = randi()
+
 	
 # Clear and resizes moisture map in preperation of use
 func size_map(width: int, length: int) -> void:
@@ -20,6 +22,8 @@ func size_map(width: int, length: int) -> void:
 		
 # Generates an moisture map for the desired width and length
 func gen_moisture(width: int, length: int) -> Array[PackedFloat32Array]:
+	rng.randomize()
+	_noise_gen.seed = rng.randi()
 	size_map(width, length)
 	for y in range(length):
 		for x in range(width):

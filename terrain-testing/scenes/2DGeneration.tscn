@@ -36,6 +36,6 @@ LENGTH = 1024
 elevation_gen = SubResource("Resource_d0x37")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1157926201]
-position = Vector2(1119, 654)
-zoom = Vector2(0.3, 0.3)
+position = Vector2(5865, 3221)
+zoom = Vector2(0.1, 0.1)
 script = ExtResource("4_hw8is")
