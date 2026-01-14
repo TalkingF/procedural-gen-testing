@@ -26,7 +26,7 @@ func size_map(width: int, length: int) -> void:
 		
 
 # Generates an elevation map for the desired width and length
-func gen_elevation(width: int, length: int) -> Array[PackedFloat32Array]:
+func gen_elevation(width: int, length: int, clamp: bool = true) -> Array[PackedFloat32Array]:
 	rng.randomize()
 	_noise_gen.seed = rng.randi()
 	
@@ -36,7 +36,8 @@ func gen_elevation(width: int, length: int) -> Array[PackedFloat32Array]:
 			var height := _noise_gen.get_noise_2d((x + 0.13) * 0.98, (y + 0.73) * 0.87)
 			height = (height + 1.0) * 0.5
 			height = curve.sample(height)
-			height = snapped(height , 0.01)
+			if clamp:
+				height = snapped(height , 0.01)
 			_elevation_map[x][y] = height
 	return _elevation_map
 	

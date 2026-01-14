@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://cy8swmu85g7rh"]
+
+[ext_resource type="Script" uid="uid://bgxnu1sqrp0x6" path="res://scripts/debug_camera_3d.gd" id="1_4mhyv"]
+[ext_resource type="Script" uid="uid://5utvvvjpharq" path="res://scripts/construct_terrain_3d_mesh.gd" id="2_dt8wy"]
+[ext_resource type="Script" uid="uid://btv0ouohcnicx" path="res://scripts/elevation_generation.gd" id="3_dt8wy"]
+
+[sub_resource type="Environment" id="Environment_fm4en"]
+background_energy_multiplier = 1.8
+
+[sub_resource type="Curve" id="Curve_1rnyf"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.18414322, 0.26880014), 0.0, 0.0, 0, 0, Vector2(0.34143224, 0.37710524), 0.0, 0.0, 0, 0, Vector2(0.4693095, 0.57615054), 0.0, 0.0, 0, 0, Vector2(0.601023, 0.52093804), 0.0, 0.0, 0, 0, Vector2(0.7122763, 0.363055), 0.0, 0.0, 0, 0, Vector2(0.8312021, 0.8009547), 0.0, 0.0, 0, 0]
+point_count = 7
+
+[sub_resource type="Resource" id="Resource_f21hp"]
+script = ExtResource("3_dt8wy")
+curve = SubResource("Curve_1rnyf")
+metadata/_custom_type_script = "uid://btv0ouohcnicx"
+
+[node name="3DGeneration" type="Node3D" unique_id=1401685679]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1612100409]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115, 75, 50)
+fov = 90.0
+script = ExtResource("1_4mhyv")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1101783611]
+environment = SubResource("Environment_fm4en")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=814872592]
+transform = Transform3D(1, 0, 0, 0, 1.1924881e-08, 1, 0, -1, 1.1924881e-08, 0, 200, 0)
+light_energy = 2.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=576559185]
+script = ExtResource("2_dt8wy")
+elevation_gen = SubResource("Resource_f21hp")
